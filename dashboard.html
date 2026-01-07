@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      background: #0d6efd;
+      color: white;
+      padding: 15px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar .logo {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* PAGE CONTENT */
+    .container {
+      padding: 40px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    .cards {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+      min-width: 220px;
+      flex: 1;
+    }
+
+    /* MOBILE */
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px;
+      }
+
+      .nav-links a {
+        margin-left: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+  <div class="logo" id="welcomeUser">Dashboard</div>
+
+  <div class="nav-links">
+    <a href="/project-demo/index.html">Home</a>
+    <a href="/project-demo/about.html">About</a>
+    <a href="#" onclick="logout()">Logout</a>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="container">
+  <h2>Overview</h2>
+
+  <div class="cards">
+    <div class="card">👤 User Logged In</div>
+    <div class="card">⚡ Fast & Responsive</div>
+    <div class="card">🔒 Session Protected</div>
+  </div>
+</div>
+
+<!-- SCRIPT -->
+<script>
+  var user = localStorage.getItem("username");
+
+  if (!user) {
+    window.location.href = "/project-demo/login.html";
+  } else {
+    document.getElementById("welcomeUser").innerText =
+      "Welcome " + user;
+  }
+
+  function logout() {
+    localStorage.removeItem("username");
+    window.location.href = "/project-demo/login.html";
+  }
+</script>
+
+</body>
+</html>
